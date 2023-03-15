@@ -17,7 +17,7 @@ public class Ejemplo2urlCon {
             output.write(cadena);
             output.close(); //cerrar flujo
 
-            //LEER DE LA URL � stream de entrada
+            //LEER DE LA URL stream de entrada
             BufferedReader reader = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
             String linea;
             while ((linea = reader.readLine()) != null) {
