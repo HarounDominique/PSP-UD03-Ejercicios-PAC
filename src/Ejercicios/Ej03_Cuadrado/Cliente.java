@@ -7,12 +7,12 @@ import java.net.Socket;
 public class Cliente {
     public static void main(String[] args) {
         String Host = "localhost";
-        int Puerto = 6000; //puerto remoto
+        int puerto = 6000; //puerto remoto
         Socket cliente = null; //conecta
 
         try {
             //Abrir socket
-            cliente = new Socket(Host, Puerto);
+            cliente = new Socket(Host, puerto);
             InetAddress i = cliente.getInetAddress();
             DataInputStream dis = new DataInputStream(cliente.getInputStream());
             DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());

@@ -8,12 +8,6 @@ import java.net.Socket;
 
 public class Servidor {
     /*
-     * Realiza un programa servidor TCP que acepte 3 clientes
-     * Para cada cliente, mostrar los puertos local y remotos.
-     *
-     * Se deberá implementar el programa cliente que se conecea dicho servidor.
-     * Mostrar los puertos locales y remotos a los que está conectado su socket,
-     * y la dirección IP de la máquina remota a la que se conecta.
      */
 
     public static void main(String[] args) {
