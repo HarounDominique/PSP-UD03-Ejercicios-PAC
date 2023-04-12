@@ -12,18 +12,18 @@ public class Servidor {
      */
 
     public static void main(String[] args) {
-        int port = 6000;// Puerto
+        int port = 12345;// Puerto
 
         try {
             byte[] buffer = new byte[1024];
-            DatagramSocket socketReceive = new DatagramSocket(12345);
-            DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length);
+            DatagramSocket socketReceive = new DatagramSocket(port);
+            DatagramPacket datagramReceive = new DatagramPacket(buffer, buffer.length);
 
-            socketReceive.receive(datagramPacket);
+            socketReceive.receive(datagramReceive);
 
-            String cadena = new String(datagramPacket.getData());
+            String cadena = new String(datagramReceive.getData()).trim();
             System.out.println("Recibido: " + cadena);
-
+            /*
             InetAddress destino = InetAddress.getByName("localhost");
             DatagramPacket datagramSend = new DatagramPacket(cadena.toUpperCase().getBytes(), cadena.getBytes().length, destino, port);
             DatagramSocket socketSend = new DatagramSocket(12345);
@@ -32,6 +32,7 @@ public class Servidor {
             //Cerrar recursos
             socketReceive.close();
             socketSend.close();
+             */
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -23,6 +23,7 @@ public class Cliente {
             socketSend.send(datagramSend);
             socketSend.close(); //Cerrar socket
 
+            /*
             byte[] buffer = new byte[1024];
             DatagramSocket socketReceive = new DatagramSocket(port);
             DatagramPacket datagramReceive = new DatagramPacket(buffer, buffer.length);
@@ -35,6 +36,7 @@ public class Cliente {
 
             //Cerrar recursos
             socketReceive.close();
+            */
 
         } catch (IOException e) {
             throw new RuntimeException(e);
