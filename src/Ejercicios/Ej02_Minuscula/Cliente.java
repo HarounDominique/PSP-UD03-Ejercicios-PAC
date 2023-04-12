@@ -1,6 +1,8 @@
-package Ejercicios.Ej_Minuscula;
+package Ejercicios.Ej02_Minuscula;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Locale;
@@ -27,7 +29,10 @@ public class Cliente {
 
             dos.writeUTF(dis.readUTF().toLowerCase(Locale.ROOT));
 
+            //Cerrar recursos
             cliente.close(); //Cierra el socket
+            dis.close();
+            dos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

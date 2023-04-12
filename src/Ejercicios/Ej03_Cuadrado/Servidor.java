@@ -1,12 +1,11 @@
-package Ejercicios.Ej_Minuscula;
+package Ejercicios.Ej03_Cuadrado;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Locale;
+import java.util.Scanner;
 
 public class Servidor {
     /*
@@ -28,15 +27,19 @@ public class Servidor {
             Socket cliente = servidor.accept(); //esperando a un cliente
 
             //realizar acciones con cliente
-            String mensaje = "MENSAJE MAYÚSCULAS";
+            System.out.println("Introduzca un número por teclado para recibir su cuadrado:");
             DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
-            System.out.println("Enviando: " + mensaje);
-            dos.writeUTF(mensaje);
+            Scanner sc = new Scanner(System.in);
+            dos.writeUTF(Integer.toString(sc.nextInt()));
 
             DataInputStream dis = new DataInputStream(cliente.getInputStream());
             System.out.println("ECHO => " + dis.readUTF());
 
+            //cerrar recursos
             servidor.close(); //cierro socket servidor
+            sc.close();
+            dis.close();
+            dos.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
