@@ -13,12 +13,12 @@ public class Cliente {
         // ABRIR SOCKET
         Socket cliente = new Socket(host, puerto);//conecta
 
-        InetAddress i= cliente.getInetAddress ();
-        System.out.println ("Puerto local: "+ cliente.getLocalPort());
-        System.out.println ("Puerto Remoto: "+ cliente.getPort());
-        System.out.println ("Nombre Host/IP: "+ cliente.getInetAddress());
-        System.out.println ("Host Remoto: "+ i.getHostName().toString());
-        System.out.println ("IP Host Remoto: "+ i.getHostAddress().toString());
+        InetAddress i = cliente.getInetAddress ();
+        System.out.println ("Puerto local: " + cliente.getLocalPort());
+        System.out.println ("Puerto Remoto: " + cliente.getPort());
+        System.out.println ("Nombre Host/IP: " + cliente.getInetAddress());
+        System.out.println ("Host Remoto: " + i.getHostName());
+        System.out.println ("IP Host Remoto: " + i.getHostAddress());
 
         cliente.close();// Cierra el socket
     }
