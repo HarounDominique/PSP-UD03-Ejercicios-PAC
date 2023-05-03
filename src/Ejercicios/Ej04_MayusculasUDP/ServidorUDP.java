@@ -41,8 +41,7 @@ public class ServidorUDP {
             // pasar a mayusculas y enviarlo al cliente
             // ENVIANDO DATAGRAMA AL CLIENTE - cadena a mayuscula
             String mayuscula = paquete.trim().toUpperCase();
-            byte[] enviados;
-            enviados = mayuscula.getBytes();
+            byte[] enviados = mayuscula.getBytes();
 
             DatagramPacket envio = new DatagramPacket(enviados, enviados.length, IPOrigen, puerto);
             socket.send(envio);
