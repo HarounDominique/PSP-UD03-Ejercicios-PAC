@@ -1,4 +1,4 @@
-package Ejercicios.Ej03_Cuadrado;
+package Ejercicios.Ej03_CuadradoNumero;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

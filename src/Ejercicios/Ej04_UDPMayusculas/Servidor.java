@@ -1,9 +1,8 @@
-package Ejercicios.Ej_UDPMayusculas;
+package Ejercicios.Ej04_UDPMayusculas;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 
 public class Servidor {
     /*

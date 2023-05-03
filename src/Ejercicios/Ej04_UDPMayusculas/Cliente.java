@@ -1,4 +1,4 @@
-package Ejercicios.Ej_UDPMayusculas;
+package Ejercicios.Ej04_UDPMayusculas;
 
 import java.io.IOException;
 import java.net.*;
