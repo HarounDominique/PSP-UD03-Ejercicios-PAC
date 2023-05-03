@@ -1,10 +1,8 @@
-package boletin1.Ej02_VerHTML;
+package Boletin1.Ej02_VerHTML;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 

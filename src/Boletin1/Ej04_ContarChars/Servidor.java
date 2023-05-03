@@ -1,4 +1,4 @@
-package boletin1.Ej04_ContarChars;
+package Boletin1.Ej04_ContarChars;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

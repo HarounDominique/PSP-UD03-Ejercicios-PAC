@@ -1,4 +1,4 @@
-package boletin1.Ej01_InfoIP;
+package Boletin1.Ej01_InfoIP;
 
 import java.io.IOException;
 import java.net.InetAddress;

@@ -1,12 +1,9 @@
-package boletin1.Ej04_ContarChars;
+package Boletin1.Ej04_ContarChars;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Cliente {

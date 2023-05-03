@@ -1,4 +1,4 @@
-package boletin1.Ej03_SocketsTCP;
+package Boletin1.Ej03_SocketsTCP;
 
 import java.io.IOException;
 import java.net.ServerSocket;
