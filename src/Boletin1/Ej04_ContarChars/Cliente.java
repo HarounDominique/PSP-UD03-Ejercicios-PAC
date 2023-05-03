@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Cliente {
     public static void main(String[] args) {
-        String Host = "localhost";
+        String host = "localhost";
         int puerto = 6000; //puerto remoto
         Socket cliente = null; //conecta
 
@@ -20,10 +20,9 @@ public class Cliente {
 
         try {
                 //ABRIR SOCKET
-                cliente = new Socket(Host, puerto);
+                cliente = new Socket(host, puerto);
 
                 dis = new DataInputStream(cliente.getInputStream());
-
                 dos = new DataOutputStream(cliente.getOutputStream());
 
                 do {
@@ -36,9 +35,9 @@ public class Cliente {
                 } while (!cadena.equals("*"));
 
             //Cerrar recursos
-            cliente.close(); //Cierra el socket
             dis.close();
             dos.close();
+            cliente.close(); //Cierra el socket
 
         } catch (IOException e) {
             System.err.println(e.getMessage());

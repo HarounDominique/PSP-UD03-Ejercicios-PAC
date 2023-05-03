@@ -10,6 +10,7 @@ public class InfoIP {
      * vaya mostrando por pantalla información sobre ellas, haciendo uso de la clase InetAddress.
      */
     public static void main(String[] args) throws IOException {
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca una IP o nombre de equipo para obtener su información");
 

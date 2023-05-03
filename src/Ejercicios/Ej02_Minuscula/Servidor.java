@@ -29,9 +29,10 @@ public class Servidor {
             System.out.println("ECHO => " + dis.readUTF());
 
             //Cerrar recursos
-            servidor.close(); //cierro socket servidor
             dis.close();
             dos.close();
+            servidor.close(); //cierro socket servidor
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

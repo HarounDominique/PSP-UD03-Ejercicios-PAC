@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class ServidorTCP {
     /*
      * Realiza un programa servidor TCP que acepte 2 clientes.
      * Mostrar para cada cliente conectados sus puertos local y remoto.

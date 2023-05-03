@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Servidor {
+public class ServidorTCP {
     /*
      */
 
@@ -30,10 +30,10 @@ public class Servidor {
             System.out.println("ECHO => " + dis.readUTF());
 
             //cerrar recursos
-            servidor.close(); //cierro socket servidor
             sc.close();
             dis.close();
             dos.close();
+            servidor.close(); //cierro socket servidor
 
         } catch (IOException e) {
             throw new RuntimeException(e);

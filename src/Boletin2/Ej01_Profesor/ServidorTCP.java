@@ -4,16 +4,14 @@ import Boletin2.Ej01_Profesor.model.Asignatura;
 import Boletin2.Ej01_Profesor.model.Especialidad;
 import Boletin2.Ej01_Profesor.model.Profesor;
 
-import javax.sql.rowset.Predicate;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class Servidor {
+public class ServidorTCP {
     /*
      * Un profesor podrá impartir hasta 3 asignaturas.
      * Utilizando sockets TCP, implementar un programa servidor que inicialice un array de 5 objetosde tipo Profesor.
@@ -28,8 +26,6 @@ public class Servidor {
     public static void main(String[] args) throws IOException {
 
         ArrayList<Profesor> profesores = generarProfesores();
-
-        long id = 1;
 
         while (true) {
             int puerto = 6000;// Puerto
@@ -64,8 +60,7 @@ public class Servidor {
                 System.err.println(e.getMessage());
             }
 
-            servidor.close();    //cierro socket servidor
-            id++;
+            servidor.close(); //Cerrar socket servidor
         }
     }
 

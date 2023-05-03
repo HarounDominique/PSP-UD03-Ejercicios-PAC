@@ -34,9 +34,10 @@ public class Servidor {
             }
 
             //Cerrar recursos
-            servidor.close(); //cierro socket servidor
             dis.close();
             dos.close();
+            servidor.close(); //cierro socket servidor
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

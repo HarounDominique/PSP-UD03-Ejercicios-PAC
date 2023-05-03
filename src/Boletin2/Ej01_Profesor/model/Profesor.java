@@ -9,6 +9,9 @@ public class Profesor implements Serializable {
     private ArrayList<Asignatura> asignaturas = new ArrayList<>();
     private Especialidad especialidad;
 
+    public Profesor() {
+    }
+
     public Profesor(int idProfesor, String nombre) {
         this.idProfesor = idProfesor;
         this.nombre = nombre;

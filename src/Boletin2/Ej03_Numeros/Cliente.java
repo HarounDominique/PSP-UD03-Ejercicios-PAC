@@ -19,16 +19,15 @@ public class Cliente {
 
         Numero numero;
 
+        //ABRIR SOCKET
+        cliente = new Socket(Host, puerto);
+
+        ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
+        ObjectInputStream dis = new ObjectInputStream(cliente.getInputStream());
+
         do {
             System.out.println("Introduzca un número, -1 para terminar");
-
             numero = new Numero(new Scanner(System.in).nextInt());
-
-            //ABRIR SOCKET
-            cliente = new Socket(Host, puerto);
-
-            ObjectInputStream dis = new ObjectInputStream(cliente.getInputStream());
-            ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
 
             System.out.println("Enviando objeto: " + numero);
             oos.writeObject(numero);
@@ -40,12 +39,11 @@ public class Cliente {
                 throw new RuntimeException(e);
             }
 
-            //Cerrar recursos
-            cliente.close(); //Cierra el socket
-            dis.close();
-            oos.close();
-
         } while (numero.getNumero() > 0);
 
+        //Cerrar recursos
+        dis.close();
+        oos.close();
+        cliente.close(); //Cierra el socket
     }
 }

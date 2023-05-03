@@ -1,11 +1,12 @@
-package Ejercicios.Ej01_SocketsTCP;
+package Boletin1.Ej03_SocketsTCP;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
-public class Cliente {
-    public static void main(String[] args) throws IOException {
+public class ClienteTCP {
+    public static void main(String[] args) throws UnknownHostException, IOException {
         String host = "localhost";
         int puerto = 6000;//puerto remoto
 

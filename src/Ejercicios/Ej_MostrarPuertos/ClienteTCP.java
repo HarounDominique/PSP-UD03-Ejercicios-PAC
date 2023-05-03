@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Cliente {
+public class ClienteTCP {
     public static void main(String[] args) {
         String Host = "localhost";
         int Puerto = 6000; //puerto remoto
@@ -20,6 +20,7 @@ public class Cliente {
             System.out.println("[Cliente] Host Remoto: " + i.getHostName());
             System.out.println("Cliente] IP Host Remoto: " + i.getHostAddress());
             cliente.close(); //Cierra el socket
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -15,7 +15,8 @@ public class VerHTML {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca una url para ver su código HTML");
 
-        URL url = null;
+        URL url;
+
         try {
             url = new URL(sc.nextLine());
 

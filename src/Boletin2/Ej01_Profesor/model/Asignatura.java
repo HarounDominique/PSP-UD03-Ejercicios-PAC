@@ -6,6 +6,9 @@ public class Asignatura implements Serializable {
     private int id;
     private String nombreAsignatura;
 
+    public Asignatura() {
+    }
+
     public Asignatura(int id, String nombreAsignatura) {
         this.id = id;
         this.nombreAsignatura = nombreAsignatura;

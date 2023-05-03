@@ -5,7 +5,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class ServidorTCP {
     /*
      * Realiza un programa servidor TCP que acepte 3 clientes
      * Para cada cliente, mostrar los puertos local y remotos.
@@ -49,7 +49,6 @@ public class Servidor {
             System.out.println("[Servidor] Puerto Remoto: " + cliente3.getPort());
             System.out.println("[Servidor] Host Remoto: " + inetAddress.getHostName());
             System.out.println("[Servidor] IP Host Remoto: " + inetAddress.getHostAddress());
-
 
             servidor.close(); //cierro socket servidor
 

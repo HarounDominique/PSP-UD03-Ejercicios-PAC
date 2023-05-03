@@ -1,10 +1,10 @@
-package Ejercicios.Ej04_UDPMayusculas;
+package Ejercicios.Ej04_MayusculasUDP;
 
 import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
 
-public class Cliente {
+public class ClienteUDP {
     public static void main(String[] args) throws IOException  {
         InetAddress destino = InetAddress.getLocalHost();
         int port = 12345; //puerto remoto al que envío
@@ -13,7 +13,7 @@ public class Cliente {
         DatagramPacket recibo;
         DatagramSocket socket = new DatagramSocket();
 
-        //socket.setSoTimeout(5000);
+        socket.setSoTimeout(5000);
 
         try {
 
@@ -41,7 +41,7 @@ public class Cliente {
             } while (!cadena.equals("*"));
 
             //Cerrar recursos
-            //socketReceive.close();
+            socket.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
