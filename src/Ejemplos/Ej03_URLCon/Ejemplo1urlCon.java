@@ -1,4 +1,4 @@
-package Ejemplos.Ej3_URLCon;
+package Ejemplos.Ej03_URLCon;
 
 import java.net.*;
 import java.io.*;

@@ -3,6 +3,8 @@ package Ejercicios.Ej04_UDPMayusculas;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 
 public class Servidor {
     /*
@@ -10,33 +12,49 @@ public class Servidor {
      * El servidor le davolverá la cadena en mayúsculas. El proceso de entrada de datos finalizará cuando el cliente introduzca un asterisco.
      */
 
-    public static void main(String[] args) {
-        int port = 12345;// Puerto
+    public static void main(String[] args) throws IOException {
+        byte[] bufer = new byte[1024];// para recibir el datagrama
 
-        try {
-            byte[] buffer = new byte[1024];
-            DatagramSocket socketReceive = new DatagramSocket(port);
-            DatagramPacket datagramReceive = new DatagramPacket(buffer, buffer.length);
+        // Asocio el socket al puerto 12345
+        DatagramSocket socket = new DatagramSocket(12345);
 
-            socketReceive.receive(datagramReceive);
+        System.out.println("Servidor Esperando Datagrama .......... ");
+        DatagramPacket recibo;
+        int bytesRec;
 
-            String cadena = new String(datagramReceive.getData()).trim();
-            System.out.println("Recibido: " + cadena);
-            /*
-            InetAddress destino = InetAddress.getByName("localhost");
-            DatagramPacket datagramSend = new DatagramPacket(cadena.toUpperCase().getBytes(), cadena.getBytes().length, destino, port);
-            DatagramSocket socketSend = new DatagramSocket(12345);
-            socketSend.send(datagramSend);
+        String paquete = "";
+        do {
+            bufer = new byte[1024];
+            recibo = new DatagramPacket(bufer, bufer.length);
 
-            //Cerrar recursos
-            socketReceive.close();
-            socketSend.close();
-             */
+            socket.receive(recibo);// recibo datagrama
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            bytesRec = recibo.getLength();// obtengo numero de bytes
+            paquete = new String(recibo.getData());// obtengo String
+            paquete = paquete.trim();
+            System.out.println("Servidor Recibe:" + paquete);
 
+            if (paquete.trim().equals("*"))
+                break;
+
+            // DIRECCION ORIGEN DEL MENSAJE
+            InetAddress IPOrigen = recibo.getAddress();
+            int puerto = recibo.getPort();
+
+            // pasar a mayusculas y enviarlo al cliente
+            // ENVIANDO DATAGRAMA AL CLIENTE - cadena a mayuscula
+            String mayuscula = paquete.trim().toUpperCase();
+            byte[] enviados;
+            enviados = mayuscula.getBytes();
+
+            DatagramPacket envio = new DatagramPacket(enviados, enviados.length, IPOrigen, puerto);
+            socket.send(envio);
+
+        } while (!paquete.trim().equals("*"));
+
+        // CERRAR STREAMS Y SOCKETS
+        System.out.println("Cerrando conexion...");
+        socket.close();
 
     }
 }
