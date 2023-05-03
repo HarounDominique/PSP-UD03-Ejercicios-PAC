@@ -28,6 +28,7 @@ public class Servidor {
         while (true) {
 
             Numero numero = (Numero) ois.readObject();
+
             System.out.println("Recibido objeto: " + numero);
             System.out.println("Realizando cálculos...");
 
@@ -37,6 +38,7 @@ public class Servidor {
             oos.writeObject(numero);
 
             System.out.println("Enviando objeto: " + numero);
+
         }
     }
 }

@@ -29,17 +29,19 @@ public class Cliente {
             System.out.println("Introduzca un número, -1 para terminar");
             numero = new Numero(new Scanner(System.in).nextInt());
 
-            System.out.println("Enviando objeto: " + numero);
-            oos.writeObject(numero);
+            if (numero.getNumero() >= 0) {
+                System.out.println("Enviando objeto: " + numero);
+                oos.writeObject(numero);
 
-            try {
-                numero = (Numero) dis.readObject();
-                System.out.println("Recibido objeto: " + numero);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                try {
+                    numero = (Numero) dis.readObject();
+                    System.out.println("Recibido objeto: " + numero);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
-        } while (numero.getNumero() > 0);
+        } while (numero.getNumero() >= 0);
 
         //Cerrar recursos
         dis.close();

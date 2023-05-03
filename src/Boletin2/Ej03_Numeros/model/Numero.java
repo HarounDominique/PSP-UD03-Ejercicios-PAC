@@ -23,11 +23,11 @@ public class Numero implements Serializable {
     }
 
     public void calcularCuadrado(){
-        this.cuadrado = (long) numero * numero;
+        this.cubo = (long) Math.pow(numero, 2);
     }
 
     public void calcularCubo(){
-        this.cubo = (long) numero * numero * numero;
+        this.cubo = (long) Math.pow(numero, 3);
     }
 
     @Override
