@@ -1,17 +1,16 @@
-package Boletines.Boletin1.Ej01_InfoIP;
+package Boletines.Boletin1.Ej01_InfoInetAddress;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Scanner;
 
-public class InfoIP {
-    /*
-     * Realiza un programa Java que admita desde consola nombres de máquinas o direcciones IP y
+public class InfoInetAddress {
+    /* Realiza un programa Java que admita desde consola nombres de máquinas o direcciones IP y
      * vaya mostrando por pantalla información sobre ellas, haciendo uso de la clase InetAddress.
      */
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca una IP o nombre de equipo para obtener su información");
+        System.out.println("Introduzca una IP o nombre de equipo para obtener su información, * para salir:");
 
         String host;
 
