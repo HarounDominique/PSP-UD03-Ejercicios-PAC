@@ -7,18 +7,18 @@ import java.net.Socket;
 public class ClienteTCP {
     public static void main(String[] args) throws IOException {
         String host = "localhost";
-        int puerto = 6000;//puerto remoto
+        int port = 6000; // remote port
 
-        // ABRIR SOCKET
-        Socket cliente = new Socket(host, puerto);//conecta
+        Socket clientSocket = new Socket(host, port); // Establece conexión
 
-        InetAddress i = cliente.getInetAddress ();
-        System.out.println ("Puerto local: " + cliente.getLocalPort());
-        System.out.println ("Puerto Remoto: " + cliente.getPort());
-        System.out.println ("Nombre Host/IP: " + cliente.getInetAddress());
+        InetAddress i = clientSocket.getInetAddress ();
+        System.out.println ("Puerto local: " + clientSocket.getLocalPort());
+        System.out.println ("Puerto Remoto: " + clientSocket.getPort());
+        System.out.println ("Nombre Host/IP: " + clientSocket.getInetAddress());
         System.out.println ("Host Remoto: " + i.getHostName());
         System.out.println ("IP Host Remoto: " + i.getHostAddress());
 
-        cliente.close();// Cierra el socket
+        clientSocket.close(); // Cierra el socket
     }
+
 }

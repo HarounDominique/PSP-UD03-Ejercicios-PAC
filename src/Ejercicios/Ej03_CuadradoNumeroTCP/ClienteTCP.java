@@ -1,4 +1,4 @@
-package Ejercicios.Ej03_CuadradoNumero;
+package Ejercicios.Ej03_CuadradoNumeroTCP;
 
 import java.io.*;
 import java.net.InetAddress;
