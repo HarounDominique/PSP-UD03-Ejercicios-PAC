@@ -23,86 +23,89 @@ public class ServidorTCP {
      * Dicho programa recogerá datos hasta recibir un * por parte del usuario.
      * Si el idProfesor no se encuentra registrado, el servidor le devolverá un objeto Profesor con datos vacíos.
      */
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args) {
         ArrayList<Profesor> profesores = generarProfesores();
 
-        while (true) {
-            int puerto = 6000;// Puerto
-            ServerSocket servidor = new ServerSocket(puerto);
-            System.out.println("Escuchando en " + servidor.getLocalPort());
+        int port = 6000;
+        int clientCount = 0;
 
-            System.out.println("Esperando cliente...");
-            Socket cliente = servidor.accept();//esperando a un cliente
-            System.out.println("Puerto del cliente, getLocalPort(): " + cliente.getLocalPort());
-            System.out.println("Puerto del cliente, getPort(): " + cliente.getPort());
+        try(
+                ServerSocket serverSocket = new ServerSocket(port)
+        ){
+            while(true) {
+                System.out.println("Esperando conexión de cliente...");
+                Socket clientSocket = serverSocket.accept();
+                clientCount++;
+                System.out.println("Cliente " + clientCount + " conectado.");
 
-            DataInputStream isr = new DataInputStream(cliente.getInputStream());
-            ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
+                DataInputStream dis = new DataInputStream(clientSocket.getInputStream());
+                ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            String cadena = isr.readUTF();
-            try {
-                if (!cadena.equals("*")) {
-                    long idProfesor = Long.parseLong(cadena);
-                    System.out.println("Recibido id: " + idProfesor);
 
-                    Profesor profesor;
+                int id;
+                do {
+                    id = Integer.parseInt(dis.readUTF());
 
-                    for (Profesor p : profesores) {
-                        if (p.getIdProfesor() == idProfesor) {
-                            profesor = p;
-                            oos.writeObject(profesor);
-                            oos.flush();
+                    if (id != -1) {
+                        System.out.println("Enviado datos de profesor con id: " + id + ".");
+                        Profesor profesor = new Profesor();
+                        for (Profesor p : profesores){
+                            if (p.getIdProfesor() == id) {
+                                profesor = p;
+                            }
                         }
+                        oos.writeObject(profesor);
                     }
-                }
-            } catch (NumberFormatException e) {
-                System.err.println(e.getMessage());
+
+                } while (id != -1);
+
+                dis.close();
+                oos.close();
             }
 
-            servidor.close(); //Cerrar socket servidor
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private static ArrayList<Profesor> generarProfesores() {
+    private static ArrayList<Profesor> generarProfesores(){
         ArrayList<Profesor> profesores = new ArrayList<>();
-        profesores.add(new Profesor(0, "Profesor 1"));
-        profesores.add(new Profesor(1, "Profesor 2"));
-        profesores.add(new Profesor(2, "Profesor 3"));
-        profesores.add(new Profesor(3, "Profesor 4"));
-        profesores.add(new Profesor(4, "Profesor 5"));
 
-        Asignatura matematicas = new Asignatura(0, "Matemáticas");
-        Asignatura lengua = new Asignatura(1, "Lengua castellana");
-        Asignatura ingles = new Asignatura(2, "Inglés");
-        Asignatura educacionFisica = new Asignatura(3, "Educación física");
+        Asignatura matematicas = new Asignatura(1, "Matemáticas");
+        Asignatura lengua = new Asignatura(2, "Lengua castellana");
+        Asignatura historia = new Asignatura(3, "Historia");
         Asignatura filosofia = new Asignatura(4, "Filosofía");
+        Asignatura educaciónFísica = new Asignatura(5, "Educación física");
 
-        profesores.get(0).getAsignaturas().add(matematicas);
-        profesores.get(0).getAsignaturas().add(ingles);
-        profesores.get(0).getAsignaturas().add(lengua);
+        Especialidad ciencias = new Especialidad(1, "Ciencias");
+        Especialidad letras = new Especialidad(2, "Letras");
+        Especialidad sociales = new Especialidad(3, "Sociales");
 
-        profesores.get(1).getAsignaturas().add(filosofia);
-        profesores.get(1).getAsignaturas().add(educacionFisica);
+        Profesor profesor1 = new Profesor(1, "Profesor 1");
+        profesor1.setEspecialidad(letras);
+        profesor1.setAsignaturas(new Asignatura[]{lengua, filosofia, historia});
 
+        Profesor profesor2 = new Profesor(2, "Profesor 2");
+        profesor2.setEspecialidad(ciencias);
+        profesor2.setAsignaturas(new Asignatura[]{matematicas});
 
-        profesores.get(2).getAsignaturas().add(ingles);
+        Profesor profesor3 = new Profesor(3, "Profesor 3");
+        profesor3.setEspecialidad(sociales);
+        profesor3.setAsignaturas(new Asignatura[]{matematicas, historia});
 
-        profesores.get(3).getAsignaturas().add(matematicas);
+        Profesor profesor4 = new Profesor(4, "Profesor 4");
+        profesor4.setEspecialidad(ciencias);
+        profesor4.setAsignaturas(new Asignatura[]{matematicas, educaciónFísica});
 
-        profesores.get(4).getAsignaturas().add(filosofia);
+        Profesor profesor5 = new Profesor(5, "Profesor 5");
+        profesor5.setEspecialidad(letras);
+        profesor5.setAsignaturas(new Asignatura[]{historia});
 
-        Especialidad especialidad1 = new Especialidad(0, "Especialidad 1");
-        Especialidad especialidad2 = new Especialidad(1, "Especialidad 2");
-        Especialidad especialidad3 = new Especialidad(2, "Especialidad 3");
-        Especialidad especialidad4 = new Especialidad(3, "Especialidad 4");
-        Especialidad especialidad5 = new Especialidad(4, "Especialidad 5");
-
-        profesores.get(0).setEspecialidad(especialidad1);
-        profesores.get(1).setEspecialidad(especialidad2);
-        profesores.get(2).setEspecialidad(especialidad3);
-        profesores.get(3).setEspecialidad(especialidad4);
-        profesores.get(4).setEspecialidad(especialidad5);
+        profesores.add(profesor1);
+        profesores.add(profesor2);
+        profesores.add(profesor3);
+        profesores.add(profesor4);
+        profesores.add(profesor5);
 
         return profesores;
     }

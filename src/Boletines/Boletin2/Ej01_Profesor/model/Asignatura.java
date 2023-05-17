@@ -29,4 +29,12 @@ public class Asignatura implements Serializable {
     public void setNombreAsignatura(String nombreAsignatura) {
         this.nombreAsignatura = nombreAsignatura;
     }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" +
+                "id=" + id +
+                ", nombreAsignatura='" + nombreAsignatura + '\'' +
+                '}';
+    }
 }

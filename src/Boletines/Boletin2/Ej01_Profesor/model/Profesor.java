@@ -2,11 +2,12 @@ package Boletines.Boletin2.Ej01_Profesor.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Profesor implements Serializable {
     private int idProfesor;
     private String nombre;
-    private ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    private Asignatura[] asignaturas;
     private Especialidad especialidad;
 
     public Profesor() {
@@ -33,12 +34,13 @@ public class Profesor implements Serializable {
         this.nombre = nombre;
     }
 
-    public ArrayList<Asignatura> getAsignaturas() {
+    public Asignatura[] getAsignaturas() {
         return asignaturas;
     }
 
-    public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
-        this.asignaturas = asignaturas;
+    public void setAsignaturas(Asignatura[] asignaturas) {
+        if (asignaturas.length <= 3)
+            this.asignaturas = asignaturas;
     }
 
     public Especialidad getEspecialidad() {
@@ -55,6 +57,7 @@ public class Profesor implements Serializable {
                 "idProfesor=" + idProfesor +
                 ", nombre='" + nombre + '\'' +
                 ", especialidad=" + especialidad.getNombreEspecialidad() +
+                ", asignaturas=" + Arrays.toString(asignaturas) +
                 '}';
     }
 }

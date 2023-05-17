@@ -8,32 +8,42 @@ import java.util.Scanner;
 
 public class ClienteTCP {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Scanner sc = new Scanner(System.in);
+
         String host = "localhost";
-        int puerto = 6000; //puerto remoto
-        Socket cliente; //conecta
+        int port = 6000;
 
-        //Abrir socket
-        cliente = new Socket(host, puerto);
+        try (
+                Socket clientSocket = new Socket(host, port)
+        ) {
+            DataOutputStream dos = new DataOutputStream(clientSocket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
 
-        ObjectInputStream dis = new ObjectInputStream(cliente.getInputStream());
-        DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
+            int id;
 
-        String cadena;
-        do {
-            System.out.println("Introduzca el id del profesor a consultar, * para salir.");
-            cadena = new Scanner(System.in).nextLine();
+            do {
+                System.out.println("Introduzca el ID del profesor a consultar. -1 para salir.");
+                id = Integer.parseInt(sc.nextLine());
 
-            dos.writeUTF(cadena);
+                dos.writeUTF(Integer.toString(id));
 
-            Profesor profesor = (Profesor) dis.readObject();
-            System.out.println(profesor.toString());
+                if (id != -1) {
+                    Profesor profesor = (Profesor) ois.readObject();
+                    if (profesor.getIdProfesor() > 0) {
+                        System.out.println("Recibido:");
+                        System.out.println(profesor);
+                    } else {
+                        System.out.println("No se han encontrador profesores con el id: " + id);
+                    }
+                }
 
-        } while (!cadena.equals("*"));
+            } while (id != -1);
 
-        //Cerrar recursos
-        dis.close();
-        dos.close();
-        cliente.close(); //Cierra el socket
+            dos.close();
+            ois.close();
 
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -29,4 +29,12 @@ public class Especialidad implements Serializable {
     public void setNombreEspecialidad(String nombreEspecialidad) {
         this.nombreEspecialidad = nombreEspecialidad;
     }
+
+    @Override
+    public String toString() {
+        return "Especialidad{" +
+                "id=" + id +
+                ", nombreEspecialidad='" + nombreEspecialidad + '\'' +
+                '}';
+    }
 }
