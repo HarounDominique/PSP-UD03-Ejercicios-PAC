@@ -1,4 +1,4 @@
-package Boletines.Boletin2.Ej03_Numeros.model;
+package Boletines.Boletin2.Ej03_NumerosUDP.model;
 
 import java.io.Serializable;
 
@@ -7,11 +7,14 @@ public class Numero implements Serializable {
     private long cuadrado;
     private long cubo;
 
-    public Numero() {
-    }
-
     public Numero(int numero) {
         this.numero = numero;
+    }
+
+    public Numero(int numero, long cuadrado, long cubo) {
+        this.numero = numero;
+        this.cuadrado = cuadrado;
+        this.cubo = cubo;
     }
 
     public int getNumero() {
@@ -22,12 +25,20 @@ public class Numero implements Serializable {
         this.numero = numero;
     }
 
-    public void calcularCuadrado(){
-        this.cubo = (long) Math.pow(numero, 2);
+    public long getCuadrado() {
+        return cuadrado;
     }
 
-    public void calcularCubo(){
-        this.cubo = (long) Math.pow(numero, 3);
+    public void setCuadrado(long cuadrado) {
+        this.cuadrado = cuadrado;
+    }
+
+    public long getCubo() {
+        return cubo;
+    }
+
+    public void setCubo(long cubo) {
+        this.cubo = cubo;
     }
 
     @Override

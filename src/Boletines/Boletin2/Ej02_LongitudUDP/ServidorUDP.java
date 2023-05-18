@@ -1,6 +1,6 @@
 package Boletines.Boletin2.Ej02_LongitudUDP;
 
-import java.io.IOException;
+import  java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
