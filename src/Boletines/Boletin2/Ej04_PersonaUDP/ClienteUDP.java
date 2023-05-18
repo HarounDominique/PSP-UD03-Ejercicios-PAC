@@ -1,6 +1,6 @@
 package Boletines.Boletin2.Ej04_PersonaUDP;
 
-import Boletines.Boletin02.Ej04.models.Persona;
+import Boletines.Boletin2.Ej04_PersonaUDP.models.Persona;
 
 import java.io.*;
 import java.net.DatagramPacket;
@@ -24,19 +24,17 @@ public class ClienteUDP {
                 System.out.println("Introduzca los apellidos de la persona:");
                 String personSurname = sc.nextLine();
                 Persona person = new Persona(personName, personSurname);
-                byte[] outgoingBuffer;
 
+                byte[] outgoingBuffer;
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 ObjectOutputStream oos = new ObjectOutputStream(bos);
                 oos.writeObject(person);
-
                 outgoingBuffer = bos.toByteArray();
                 bos.flush();
 
                 InetAddress serverAddress = InetAddress.getByName(host);
                 DatagramPacket outgoingPacket = new DatagramPacket(outgoingBuffer, outgoingBuffer.length, serverAddress, serverPort);
                 clientSocket.send(outgoingPacket);
-
 
                 System.out.println("Enviando: " + person);
 
