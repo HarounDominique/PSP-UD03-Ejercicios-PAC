@@ -20,7 +20,7 @@ public class ServidorUDP {
         System.out.println("Servidor Esperando Datagrama .......... ");
         DatagramPacket recibo;
 
-        String paquete = "";
+        String paquete;
         do {
             bufer = new byte[1024];
             recibo = new DatagramPacket(bufer, bufer.length);
