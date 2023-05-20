@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class ServidorTCP {
+public class ServidorUDP {
     /*
      * Crea un programa cliente que introduzca por teclado un número e inicialice un objeto Numeros,
      * el atributo numero debe contener el número introducido por teclado.

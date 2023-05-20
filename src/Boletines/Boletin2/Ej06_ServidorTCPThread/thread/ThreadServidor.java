@@ -1,4 +1,4 @@
-package Boletines.Boletin2.Ej06_ServidorThread.thread;
+package Boletines.Boletin2.Ej06_ServidorTCPThread.thread;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
