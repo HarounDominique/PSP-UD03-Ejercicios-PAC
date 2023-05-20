@@ -1,4 +1,4 @@
-package Ejercicios.Ej_Multicast;
+package Ejercicios.Ej05_Multicast;
 
 import java.io.BufferedReader;
 import java.io.IOException;

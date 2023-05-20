@@ -1,6 +1,5 @@
-package Ejercicios.Ej_Multicast;
+package Ejercicios.Ej05_Multicast;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
