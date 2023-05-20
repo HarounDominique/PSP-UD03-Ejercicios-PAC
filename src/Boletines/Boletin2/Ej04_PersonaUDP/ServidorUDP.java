@@ -1,6 +1,6 @@
 package Boletines.Boletin2.Ej04_PersonaUDP;
 
-import Boletines.Boletin02.Ej04.models.Persona;
+import Boletines.Boletin2.Ej04_PersonaUDP.models.Persona;
 
 import java.io.*;
 import java.net.DatagramPacket;

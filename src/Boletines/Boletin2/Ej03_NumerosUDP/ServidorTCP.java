@@ -1,6 +1,6 @@
 package Boletines.Boletin2.Ej03_NumerosUDP;
 
-import Boletines.Boletin02.Ej03.model.Numero;
+import Boletines.Boletin2.Ej03_NumerosUDP.model.Numero;
 
 import java.io.*;
 import java.net.DatagramPacket;

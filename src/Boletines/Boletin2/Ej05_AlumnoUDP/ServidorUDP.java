@@ -1,7 +1,7 @@
 package Boletines.Boletin2.Ej05_AlumnoUDP;
 
-import Boletines.Boletin02.Ej05.models.Alumno;
-import Boletines.Boletin02.Ej05.models.Curso;
+import Boletines.Boletin2.Ej05_AlumnoUDP.models.Alumno;
+import Boletines.Boletin2.Ej05_AlumnoUDP.models.Curso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

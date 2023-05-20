@@ -1,6 +1,6 @@
 package Boletines.Boletin2.Ej06_ServidorThread;
 
-import Boletines.Boletin02.Ej06.models.ThreadServidor;
+import Boletines.Boletin2.Ej06_ServidorThread.thread.ThreadServidor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
