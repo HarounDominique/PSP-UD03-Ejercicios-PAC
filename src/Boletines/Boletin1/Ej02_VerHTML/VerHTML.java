@@ -20,6 +20,12 @@ public class VerHTML {
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             String inputLine;
 
+            int urlPort = url.getPort();
+            System.out.println("El puerto de la URL es: "+urlPort);
+
+            String urlHost = url.getHost();
+            System.out.println("El host de la URL es: "+urlHost);
+
             while ((inputLine = br.readLine()) != null){
                 System.out.println(inputLine);
             }
