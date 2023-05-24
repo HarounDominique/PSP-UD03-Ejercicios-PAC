@@ -37,7 +37,7 @@ public class  ServidorUDP {
                 if (!line.equals("*")){
                     System.out.println("Recibido: " + line);
 
-                    byte[] bufferOut = Integer.toString(line.length()).getBytes();
+                    byte[] bufferOut = String.valueOf(line.length()).getBytes();
 
                     InetAddress clientAddress = incomingPacket.getAddress();
                     int clientPort = incomingPacket.getPort();
