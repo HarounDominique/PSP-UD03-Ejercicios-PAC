@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class ServidorUDP {
+public class  ServidorUDP {
     /* Crea un programa cliente usando sockets UDP que envíe el texto escrito desde la entrada estándar al servidor.
      * El servidor le devolverá la cadena en mayúsculas.
      * El proceso de entrada de datos finalizará cuando el cliente introduzca un asterisco.
